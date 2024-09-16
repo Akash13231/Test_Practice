@@ -42,7 +42,7 @@ class TestOne(BaseClass):
     #     print('new test done')
 
     def test_end2end(self):
-        #log = self.getLogger()
+        log = self.getLogger()
 
         homepage = HomePage(self.driver)
         homepage.shopitem()
@@ -50,7 +50,7 @@ class TestOne(BaseClass):
         checkout2.checkout2()
 
         text = self.driver.find_element(By.XPATH, "//div[@class='alert alert-success alert-dismissible']").text
-        #log.info(text)
+        log.info(text)
         assert "Success! Thank you!" in text
 
 

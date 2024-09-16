@@ -32,16 +32,16 @@ class Test_FormFilling(BaseClass):
 
     #NOTE - Here fixture is given because we want to use it for specific for this class only
 
-    # @pytest.fixture(params=[{'firstname': 'akash', 'email': 'abc@gmail.com', 'gender': 'Male'},
-    #                         {'firstname': 'Tejashvini', 'email': 'abc@gmail.com', 'gender': 'Female'}])   #in this function test data is given in the test file
-    # def getData(self, request):
-    #     return request.param
+    @pytest.fixture(params=[{'firstname': 'akash', 'email': 'abc@gmail.com', 'gender': 'Male'},
+                            {'firstname': 'Tejashvini', 'email': 'abc@gmail.com', 'gender': 'Female'}])   #in this function test data is given in the test file
+    def getData(self, request):
+        return request.param
 
     # @pytest.fixture(params = HomePageData.test_HomePage_data)  #this is used to store data into another file and imported here using the class name
     # def getData(self, request):
     #     return request.param
 
-    @pytest.fixture(
-        params=HomePageData.get_exceldata('testcase1'))
-    def getData(self, request):
-        return request.param
+    # @pytest.fixture(
+    #     params=HomePageData.get_exceldata('testcase1'))
+    # def getData(self, request):
+    #     return request.param
