@@ -2,7 +2,7 @@
 import openpyxl
 
 class HomePageData:
-    test_HomePage_data = {'firstname':'akash','email': 'abc@gmail.com','gender': 'Male'}, {'firstname':'Tejashvini', 'email': 'abc@gmail.com', 'gender':'Female'}
+    test_HomePage_data = {'firstname':'akash','email': 'abc@gmail.com','gender': 'Male', 'dob': '01/01/2001'}, {'firstname':'Tejashvini', 'email': 'abc@gmail.com', 'gender':'Female', 'dob': '01/01/2001'}
 
     @staticmethod
     def get_exceldata(test_case_name):
