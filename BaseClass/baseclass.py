@@ -15,7 +15,7 @@ class BaseClass:
     def getLogger(self):
         loggerName = inspect.stack()[1][3]
         logger = logging.getLogger(loggerName)
-        filehandler = logging.FileHandler('logfile.log')
+        filehandler = logging.FileHandler('C:/Users/abhosage/PycharmProjects/Testing/pythonProject2/pythonProject/reports/logfile.log')
         formater = logging.Formatter("%(asctime)s : %(levelname)s : %(name)s : %(message)s")
         filehandler.setFormatter(formater)
         logger.addHandler(filehandler)

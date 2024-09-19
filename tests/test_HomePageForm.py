@@ -1,16 +1,12 @@
+import time
 import pytest
-
 from selenium.webdriver.support.select import Select
-
 from BaseClass.baseclass import BaseClass
-
-
 from TestData.HomePageData import HomePageData
 from pageobject.HomePage1 import HomePage1
 
 
 class Test_FormFilling(BaseClass):
-
 
     def test_form_sublission(self, getData):
         log = self.getLogger()
@@ -21,8 +17,9 @@ class Test_FormFilling(BaseClass):
         homepage1.check().click()
         sel= Select(homepage1.fill_gender())
         sel.select_by_visible_text(getData['gender'])
+        time.sleep(2)
+        homepage1.birth_date().send_keys(getData['dob'])
         homepage1.submit().click()
-
 
         alert_text = homepage1.sucess().text
         assert ('Success' in alert_text)
@@ -32,14 +29,16 @@ class Test_FormFilling(BaseClass):
 
     #NOTE - Here fixture is given because we want to use it for specific for this class only
 
-    @pytest.fixture(params=[{'firstname': 'akash', 'email': 'abc@gmail.com', 'gender': 'Male'},
-                            {'firstname': 'Tejashvini', 'email': 'abc@gmail.com', 'gender': 'Female'}])   #in this function test data is given in the test file
-    def getData(self, request):
-        return request.param
-
-    # @pytest.fixture(params = HomePageData.test_HomePage_data)  #this is used to store data into another file and imported here using the class name
+    # @pytest.fixture(params=[{'firstname': 'akash', 'email': 'abc@gmail.com', 'gender': 'Male', 'dob': '01/01/2001'},
+    #                         {'firstname': 'Tejashvini', 'email': 'abc@gmail.com', 'gender': 'Female', 'dob': '01/01/2001'},
+    #                         {'firstname': 'Prasad', 'email': 'abc@gmail.com', 'gender': 'Male', 'dob': '01/01/2001'},
+    #                         {'firstname': 'omkar', 'email': 'abc@gmail.com', 'gender': 'Male', 'dob': '01/01/2001'}])   #in this function test data is given in the test file
     # def getData(self, request):
     #     return request.param
+
+    @pytest.fixture(params = HomePageData.test_HomePage_data)  #this is used to store data into another file and imported here using the class name
+    def getData(self, request):
+        return request.param
 
     # @pytest.fixture(
     #     params=HomePageData.get_exceldata('testcase1'))
